@@ -9,7 +9,7 @@ public class Main {
 
         LocalDate fechaInicio =  LocalDate.of(2025, 03, 15);
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
-        LocalDate fechaActual = LocalDate.now();
+        LocalDate fechaActual = LocalDate.of(2025, 03, 19);
 
         Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin);
         Participante participante = new Participante("Mar");

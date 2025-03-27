@@ -50,9 +50,11 @@ public class Concurso {
         inscribir.inscribir(participante, this);
     }
 
+
     public void agregarParicipante (Participante participante){
         listaInscriptos.add(participante);
     }
+
 
     public ArrayList<Participante> getListaInscriptos() {
         return listaInscriptos;

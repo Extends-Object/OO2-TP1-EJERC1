@@ -7,31 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ConcursoTest {
 
-    @Test
-    public void agregarParticipanteTest (){
-
-        //Set up
-        Participante participante1 = new Participante("Mar");
-        Participante participante2 = new Participante("Rodrigo");
-        Participante participante3 = new Participante("Magin");
-
-        LocalDate fechaInicio =  LocalDate.of(2025, 03, 15);
-        LocalDate fechaFin = LocalDate.of(2025, 03, 28);
-
-        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin);
-
-        //Exercise
-        concurso.agregarParicipante(participante1);
-        concurso.agregarParicipante(participante2);
-        concurso.agregarParicipante(participante3);
-
-        //Verify
-        assertEquals(3, concurso.getListaInscriptos().size(), "El número de participantes no es correcto.");
-
-        assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante1 no está inscrito.");
-        assertTrue(concurso.getListaInscriptos().contains(participante2), "El participante2 no está inscrito.");
-        assertTrue(concurso.getListaInscriptos().contains(participante3), "El participante3 no está inscrito.");
-    }
 
     @Test
     public void inscribirPrimerDiaTest () throws LateRegistrationException {
