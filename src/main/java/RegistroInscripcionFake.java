@@ -22,5 +22,7 @@ public class RegistroInscripcionFake implements RegistroInscripcion {
         return !registros.isEmpty();
     }
 
-
+    public List<String> getRegistros() {
+        return registros;
+    }
 }

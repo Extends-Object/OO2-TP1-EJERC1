@@ -30,6 +30,8 @@ public class ConcursoTest {
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
         assertEquals(10, participante1.getPuntosAcumulados(), "Los puntos no se pudieron agregar correctamente.");
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
+
+        System.out.println(((RegistroInscripcionFake) registro).getRegistros());
     }
 
     //Hay un problema aca y es que no tengo control sobre la fecha actual, eso genera conflicto
@@ -81,6 +83,9 @@ public class ConcursoTest {
         });
 
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
+        //Se castea para poder acceder al metodo polimorfico del registro fake
+
+
     }
 
 }
