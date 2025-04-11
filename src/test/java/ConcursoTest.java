@@ -1,3 +1,4 @@
+import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ public class ConcursoTest {
 
 
     @Test
-    public void inscribirPrimerDiaTest () throws LateRegistrationException {
+    public void inscribirPrimerDiaTest () throws LateRegistrationException, DatabaseConnectionException {
         //Set up
         Participante participante1 = new Participante("Mar");
 
@@ -17,7 +18,9 @@ public class ConcursoTest {
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
         LocalDate fechaActual =  LocalDate.of(2025, 03, 23);
 
-        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin);
+        RegistroInscripcion registro = new RegistroInscripcionFake();
+
+        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin, registro);
 
         //Exercise
         concurso.inscribirParticipante(participante1, fechaActual);
@@ -26,14 +29,18 @@ public class ConcursoTest {
         assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
         assertEquals(10, participante1.getPuntosAcumulados(), "Los puntos no se pudieron agregar correctamente.");
+        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
     }
 
     //Hay un problema aca y es que no tengo control sobre la fecha actual, eso genera conflicto
     //tengo que poder hacer inyeccion de fecha --> Refactorizando Concurso
     //Una forma --> que se reciba la fecha actual como parametro (¿?)
 
+
+
+
     @Test
-    public void inscribirSinSumarPuntosTest () throws LateRegistrationException{
+    public void inscribirSinSumarPuntosTest () throws LateRegistrationException, DatabaseConnectionException {
         //Set up
         Participante participante1 = new Participante("Mar");
 
@@ -41,7 +48,9 @@ public class ConcursoTest {
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
         LocalDate fechaActual=  LocalDate.of(2025, 03, 23);
 
-        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin);
+        RegistroInscripcion registro = new RegistroInscripcionFake();
+
+        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin, registro);
 
         //Exercise
         concurso.inscribirParticipante(participante1, fechaActual);
@@ -49,6 +58,7 @@ public class ConcursoTest {
         //Verify
         assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
+        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
     }
 
     @Test
@@ -60,13 +70,17 @@ public class ConcursoTest {
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
         LocalDate fechaActual=  LocalDate.of(2025, 03, 29);
 
-        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin);
+        RegistroInscripcion registro = new RegistroInscripcionFake();
+
+        Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin, registro);
 
         //Verify
         assertThrows(LateRegistrationException.class, () -> {
             //Exercise
             concurso.inscribirParticipante(participante1, fechaActual);
         });
+
+        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
     }
 
 }

@@ -37,6 +37,7 @@ public class Concurso {
     public void inscribirParticipante (Participante participante, LocalDate fechaActual) throws LateRegistrationException, DatabaseConnectionException {
 
         this.registro.registrarInscripcion(fechaActual, participante, this);
+        //ESTE REGISTRAR ES POLIMORFICO, REGISTRO PUEDE SER UN FAKE
 
         if(fechaActual.isBefore(fechaInicio) || fechaActual.isAfter(fechaFin)){
             inscribir = new InscribirFueraDeFecha();
