@@ -7,5 +7,8 @@ public class InscribirPrimerDia implements Inscripcion{
         participante.sumarPuntos(10);
         concurso.agregarParicipante(participante);
         System.out.println("Se inscribió el participante el primer día de inscripción.");
+
+
+        //DEBERIA LLAMAR AL METODO POLIMORFICO PARA ARCHIVOS O BD DESDE LOS DISTINTOS INSCRIBIR X DIA??
     }
 }

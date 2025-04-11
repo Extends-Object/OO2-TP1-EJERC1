@@ -18,10 +18,14 @@ public class RegistroInscripcionFake implements RegistroInscripcion {
     // no que se efectúe el almacenamiento real.
 
 
+
+
     public boolean seRegistro() {
         return !registros.isEmpty();
     }
 
+
+    //SOLO PARA IMPRIMIR LA LISTA POR CONSOLA Y SABER SI SE GUARDO CORRECTAMENTE LA INSCRIPCION
     public List<String> getRegistros() {
         return registros;
     }

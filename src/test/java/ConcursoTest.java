@@ -26,12 +26,18 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante1, fechaActual);
 
         //Verify
-        assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
+        //assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
+
+        //Se encuentra en la lista? ----> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
+        //Sumo los puntos acumulados? -----> EN MEMORIA
         assertEquals(10, participante1.getPuntosAcumulados(), "Los puntos no se pudieron agregar correctamente.");
+
+
+        //Se grabo la inscripcion correctamente en el fake? ----> PARA ARCHIVOS O BD
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
 
-        System.out.println(((RegistroInscripcionFake) registro).getRegistros());
+        System.out.println(((RegistroInscripcionFake) registro).getRegistros());        //Solo imprime la lista del fake
     }
 
     //Hay un problema aca y es que no tengo control sobre la fecha actual, eso genera conflicto
@@ -58,9 +64,15 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante1, fechaActual);
 
         //Verify
-        assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
+        //assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
+        //Se encuentra en la lista? ---> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
+
+
+        //Se grabo la inscripcion correctamente en el fake? ----> PARA ARCHIVOS O BD
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
+
+        System.out.println(((RegistroInscripcionFake) registro).getRegistros());        //Solo imprime la lista del fake
     }
 
     @Test

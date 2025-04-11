@@ -36,9 +36,12 @@ public class Concurso {
     //METODOS
     public void inscribirParticipante (Participante participante, LocalDate fechaActual) throws LateRegistrationException, DatabaseConnectionException {
 
+        //PARA REGISTRAR EN ARCHIVOS O BD
         this.registro.registrarInscripcion(fechaActual, participante, this);
         //ESTE REGISTRAR ES POLIMORFICO, REGISTRO PUEDE SER UN FAKE
 
+
+        //PARA REGISTRAR EN MEMORIA ------------------------------------------------------------------------------------
         if(fechaActual.isBefore(fechaInicio) || fechaActual.isAfter(fechaFin)){
             inscribir = new InscribirFueraDeFecha();
         } else if (fechaActual.isEqual(fechaInicio)){
@@ -48,6 +51,7 @@ public class Concurso {
         }
 
         inscribir.inscribir(participante, this);
+        //--------------------------------------------------------------------------------------------------------------
     }
 
 
@@ -60,6 +64,7 @@ public class Concurso {
         return listaInscriptos;
     }
 
+    //PARA GUARDAR EN LA BASE DE DATOS
     public int getId() {
         return id;
     }
