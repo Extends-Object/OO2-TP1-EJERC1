@@ -36,12 +36,8 @@ public class Concurso {
     //METODOS
     public void inscribirParticipante (Participante participante, LocalDate fechaActual) throws LateRegistrationException, DatabaseConnectionException {
 
-        //PARA REGISTRAR EN ARCHIVOS O BD
-        this.registro.registrarInscripcion(fechaActual, participante, this);
-        //ESTE REGISTRAR ES POLIMORFICO, REGISTRO PUEDE SER UN FAKE
 
-
-        //PARA REGISTRAR EN MEMORIA ------------------------------------------------------------------------------------
+        //PARA REGISTRAR EN MEMORIA (TP 1)------------------------------------------------------------------------------
         if(fechaActual.isBefore(fechaInicio) || fechaActual.isAfter(fechaFin)){
             inscribir = new InscribirFueraDeFecha();
         } else if (fechaActual.isEqual(fechaInicio)){
@@ -52,6 +48,13 @@ public class Concurso {
 
         inscribir.inscribir(participante, this);
         //--------------------------------------------------------------------------------------------------------------
+
+
+        //PARA REGISTRAR EN ARCHIVOS O BD
+        this.registro.registrarInscripcion(fechaActual, participante, this);    //ACA PARTICIPANTE YA TIENE LOS PUNTOS ASIGNADOS
+        //ESTE REGISTRAR ES POLIMORFICO, REGISTRO PUEDE SER UN FAKE
+
+
     }
 
 
@@ -64,7 +67,7 @@ public class Concurso {
         return listaInscriptos;
     }
 
-    //PARA GUARDAR EN LA BASE DE DATOS
+    //PARA GUARDAR EN LA BASE DE DATOS ----- COMO TESTEO ESTA LOGICA??
     public int getId() {
         return id;
     }

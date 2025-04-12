@@ -20,7 +20,7 @@ public class InscripcionArchivo implements RegistroInscripcion{
 
         String informacionInscripto = (fechaFormateada + ", " + participante + ", " + concurso);
 
-        try {
+        try {               //ESTO DEBERIA IR EN MAIN Y MANEJARSE CON THROWS?? NO DEBERIA HACER MANEJO DE EXEPCIONES EN LA LOGICA DE PERSISTENCIA
             PrintWriter salida = new PrintWriter(new FileWriter(archivo, true));
             salida.println(informacionInscripto);
             salida.close();

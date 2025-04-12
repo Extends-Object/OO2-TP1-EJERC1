@@ -27,10 +27,10 @@ public class Participante {
 
     @Override
     public String toString() {
-        return String.valueOf(id);
+        return "[ID Participante: " + String.valueOf(id) + ", Puntos acumulados: " + this.id + ", ";
     }
 
-    public int getId() {
+    public int getId() {        //COMO VERIFICO ESTA LOGICA
         return id;
     }
 }

@@ -23,11 +23,10 @@ public class ConcursoTest {
         Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin, registro);
 
         //Exercise
-        concurso.inscribirParticipante(participante1, fechaActual);
+        concurso.inscribirParticipante(participante1, fechaActual);     //ACA YA TIENE EL REGISTRO FAKE ASIGNADO
 
         //Verify
-        //assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
-
+        assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         //Se encuentra en la lista? ----> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
         //Sumo los puntos acumulados? -----> EN MEMORIA

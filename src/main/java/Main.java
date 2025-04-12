@@ -22,10 +22,10 @@ public class Main {
 
         //CREANDO EL ARCHIVO
         String rutaArchivoInscriptos = "C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\Inscriptos.txt";
-        RegistroInscripcion archivoInscriptos = new InscripcionArchivo(rutaArchivoInscriptos);
+        RegistroInscripcion registroArchivo = new InscripcionArchivo(rutaArchivoInscriptos);
 
         //CREANDO EL CONCURSO
-        Concurso concurso1 = new Concurso("Concurso A", fechaInicio, fechaFin, archivoInscriptos);
+        Concurso concurso1 = new Concurso("Concurso A", fechaInicio, fechaFin, registroArchivo);
 
         try {
             concurso1.inscribirParticipante(participante1, fechaActual);
