@@ -66,16 +66,17 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante1, fechaActual);
 
         //Verify
-        //
+        //Se modifico la cantidad de participantes de la lista? -----> EN MEMORIA
         assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         //Se encuentra en la lista? ---> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
 
 
         //Se grabo la inscripcion correctamente en el fake? ----> PARA ARCHIVOS O BD
-        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
+        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada."); //DOWNCASTING
 
-        System.out.println(((RegistroInscripcionFake) registro).getRegistros());        //Solo imprime la lista del fake
+        //Solo imprime la lista del fake
+        System.out.println(((RegistroInscripcionFake) registro).getRegistros());
     }
 
     @Test
@@ -97,10 +98,32 @@ public class ConcursoTest {
             concurso.inscribirParticipante(participante1, fechaActual);
         });
 
-        assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
-        //Se castea para poder acceder al metodo polimorfico del registro fake
+
+        //jaja esto esta mal aca no va
+        //assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
 
 
+    }
+
+    @Test
+    public void notificarTest (){
+        //Set up
+        String emisor = "your.recipient@email.com";
+        String destinatario = "john.doe@your.domain";
+        String asunto = "Inscripción";
+        String cuerpo = "Usted se encuentra inscripto en el concurso.";
+
+        Notificador notificador = new NotificadorFake();           //INSTANCIO EL NOTIFICADOR
+
+        //Exercise
+        notificador.notificar(emisor, destinatario, asunto, cuerpo);
+
+        //Verify
+        assertTrue(((NotificadorFake) notificador).seNotifico(), "La inscripción no fue registrada.");
+
+
+        //Solo imprime la lista del notificador fake
+        System.out.println(((NotificadorFake) notificador).getMensajesEnviados());
     }
 
 }

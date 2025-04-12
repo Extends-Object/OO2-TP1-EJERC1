@@ -11,4 +11,13 @@ public class NotificadorFake implements Notificador{
         this.mensajesEnviados.add("Para: " + destinatario + ", Asunto: " + asunto + ", Mensaje: " + cuerpo);
 
     }
+
+    //SOLO PARA IMPRIMIR LA LISTA DE "MENSAJES ENVIADOS" POR CONSOLA Y SABER SI LE LLEGO Y SE ALMACENO UNA NOTIFICACION
+    public List<String> getMensajesEnviados() {
+        return mensajesEnviados;
+    }
+
+    public boolean seNotifico() {
+        return !mensajesEnviados.isEmpty();
+    }
 }

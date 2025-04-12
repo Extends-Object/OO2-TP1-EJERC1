@@ -18,8 +18,6 @@ public class RegistroInscripcionFake implements RegistroInscripcion {
     // no que se efectúe el almacenamiento real.
 
 
-
-
     public boolean seRegistro() {
         return !registros.isEmpty();
     }
