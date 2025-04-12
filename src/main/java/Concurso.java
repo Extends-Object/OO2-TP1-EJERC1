@@ -74,7 +74,7 @@ public class Concurso {
 
     @Override
     public String toString() {
-        return String.valueOf(id);
+        return "[ID Concurso: " + String.valueOf(id) + ", " + this.nombre + "]";
     }
 
     //******************************************************************************************************************

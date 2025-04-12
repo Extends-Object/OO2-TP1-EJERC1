@@ -15,11 +15,12 @@ public class InscripcionBaseDatos implements RegistroInscripcion{
             try {
                 Connection conn = ConnectionManager.getConnection();
                 PreparedStatement statement = conn.prepareStatement(
-                        "INSERT INTO inscripciones (fecha, id_participante, id_concurso) " + "VALUES (?, ?, ?)");
+                        "INSERT INTO inscripciones (fecha, id_participante, puntos_acumulados, id_concurso) " + "VALUES (?, ?, ?, ?)");
 
                 statement.setDate(1, Date.valueOf(fecha));
                 statement.setInt(2, participante.getId());
-                statement.setInt(3, concurso.getId());
+                statement.setInt(3, participante.getPuntosAcumulados());
+                statement.setInt(4, concurso.getId());
 
                 int cantidad = statement.executeUpdate(); // Retorna un entero la cantidad de filas que afectó
 

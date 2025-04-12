@@ -26,6 +26,7 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante1, fechaActual);     //ACA YA TIENE EL REGISTRO FAKE ASIGNADO
 
         //Verify
+        //Cambio la cantidad de elementos de la lista/ se agrego el participante? -----> EN MEMORIA
         assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         //Se encuentra en la lista? ----> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
@@ -36,7 +37,8 @@ public class ConcursoTest {
         //Se grabo la inscripcion correctamente en el fake? ----> PARA ARCHIVOS O BD
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
 
-        System.out.println(((RegistroInscripcionFake) registro).getRegistros());        //Solo imprime la lista del fake
+        //Solo imprime la lista del fake
+        System.out.println(((RegistroInscripcionFake) registro).getRegistros());
     }
 
     //Hay un problema aca y es que no tengo control sobre la fecha actual, eso genera conflicto
