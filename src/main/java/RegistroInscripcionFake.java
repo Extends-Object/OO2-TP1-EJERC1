@@ -8,7 +8,7 @@ public class RegistroInscripcionFake implements RegistroInscripcion {
 
     @Override
     public void registrarInscripcion(LocalDate fecha, Participante participante, Concurso concurso) {
-        registros.add("Fecha: " + fecha.toString() + ", ID Participante: " + participante + ", ID Concurso: " + concurso);
+        registros.add("Fecha: " + fecha.toString() + ", ID Participante: " + participante.getId() + ", puntos acumulados: " + participante.getPuntosAcumulados() + ", ID Concurso: " + concurso.getId());
     }
 
 

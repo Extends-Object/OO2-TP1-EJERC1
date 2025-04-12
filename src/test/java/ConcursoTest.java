@@ -36,6 +36,7 @@ public class ConcursoTest {
 
         //Se grabo la inscripcion correctamente en el fake? ----> PARA ARCHIVOS O BD
         assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
+        //EL CAST ES PARA PODER ACCEDER AL METODO DEL FAKE, DOWNCASTING (estoy especificando mas)
 
         //Solo imprime la lista del fake
         System.out.println(((RegistroInscripcionFake) registro).getRegistros());
@@ -65,7 +66,8 @@ public class ConcursoTest {
         concurso.inscribirParticipante(participante1, fechaActual);
 
         //Verify
-        //assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
+        //
+        assertEquals(1, concurso.getListaInscriptos().size(), "El número actual de participantes no es el esperado.");
         //Se encuentra en la lista? ---> EN MEMORIA
         assertTrue(concurso.getListaInscriptos().contains(participante1), "El participante no se encuentra en la lista.");
 

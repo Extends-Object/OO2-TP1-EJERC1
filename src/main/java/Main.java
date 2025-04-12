@@ -12,7 +12,7 @@ public class Main {
         //************************************** Crear la informacion del concurso *************************************
         LocalDate fechaInicio =  LocalDate.of(2025, 03, 15);
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
-        LocalDate fechaActual = LocalDate.of(2025, 03, 19);
+        LocalDate fechaActual = LocalDate.of(2025, 03, 15);
 
         Participante participante1 = new Participante("Mar");
         Participante participante2 = new Participante("Rodrigo");
@@ -43,9 +43,12 @@ public class Main {
 
         Concurso concurso2 = new Concurso("Concurso B", fechaInicio, fechaFin, inscriptosBD);
 
+        Participante participante3 = new Participante("Pepe");
+        Participante participante4 = new Participante("Pepa");
+
         try {
-            concurso2.inscribirParticipante(participante1, fechaActual);
-            concurso2.inscribirParticipante(participante2, fechaActual);
+            concurso2.inscribirParticipante(participante3, fechaActual);
+            concurso2.inscribirParticipante(participante4, fechaActual);
 
         } catch (LateRegistrationException e) {
             System.out.println(e.getMessage());
