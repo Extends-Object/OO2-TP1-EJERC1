@@ -122,7 +122,7 @@ public class ConcursoTest {
         assertTrue(((NotificadorFake) notificador).seNotifico(), "La inscripción no fue registrada.");
 
 
-        //Solo imprime la lista del notificador fake
+        //Solo imprime la lista del notificador fake por consola
         System.out.println(((NotificadorFake) notificador).getMensajesEnviados());
     }
 
