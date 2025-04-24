@@ -41,7 +41,7 @@ public class ConcursoTest {
     @Test
     public void inscribirPrimerDiaTest () throws LateRegistrationException, DatabaseConnectionException {
 
-        LocalDate fechaActual =  LocalDate.of(2025, 03, 23);
+        LocalDate fechaActual =  LocalDate.of(2025, 03, 20);
 
         Concurso concurso = new Concurso("Nuevo concurso", fechaInicio, fechaFin, registro, notificador);
 
