@@ -1,6 +1,7 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
 import org.junit.jupiter.api.Test;
+import persistencia.RegistroInscripcion;
 
 import java.time.LocalDate;
 
@@ -86,7 +87,9 @@ public class ConcursoTest {
 
         LocalDate fechaInicio =  LocalDate.of(2025, 03, 20);
         LocalDate fechaFin = LocalDate.of(2025, 03, 28);
-        LocalDate fechaActual=  LocalDate.of(2025, 03, 29);
+
+        LocalDate fechaAntes =  LocalDate.of(2025, 03, 18);
+        LocalDate fechaDespues =  LocalDate.of(2025, 03, 29);
 
         RegistroInscripcion registro = new RegistroInscripcionFake();
 
@@ -95,14 +98,17 @@ public class ConcursoTest {
         //Verify
         assertThrows(LateRegistrationException.class, () -> {
             //Exercise
-            concurso.inscribirParticipante(participante1, fechaActual);
+            concurso.inscribirParticipante(participante1, fechaAntes);
+        });
+
+        assertThrows(LateRegistrationException.class, () -> {
+            //Exercise
+            concurso.inscribirParticipante(participante1, fechaDespues);
         });
 
 
         //jaja esto esta mal aca no va
         //assertTrue(((RegistroInscripcionFake) registro).seRegistro(), "La inscripción no fue registrada.");
-
-
     }
 
     @Test
@@ -119,7 +125,7 @@ public class ConcursoTest {
         notificador.notificar(emisor, destinatario, asunto, cuerpo);
 
         //Verify
-        assertTrue(((NotificadorFake) notificador).seNotifico(), "La inscripción no fue registrada.");
+        assertTrue(((NotificadorFake) notificador).seNotifico(), "La inscripción no fue notificada.");
 
 
         //Solo imprime la lista del notificador fake por consola

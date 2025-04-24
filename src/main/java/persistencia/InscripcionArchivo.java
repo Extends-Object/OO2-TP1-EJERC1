@@ -1,8 +1,10 @@
+package persistencia;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class InscripcionArchivo implements RegistroInscripcion{
+public class InscripcionArchivo implements RegistroInscripcion {
 
     private String rutaArchivo;
 

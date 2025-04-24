@@ -1,3 +1,5 @@
+import persistencia.RegistroInscripcion;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -5,6 +7,7 @@ import java.util.List;
 public class RegistroInscripcionFake implements RegistroInscripcion {
 
     private final List<String> registros = new ArrayList<>();
+
 
     @Override
     public void registrarInscripcion(LocalDate fecha, Participante participante, Concurso concurso) {

@@ -1,5 +1,6 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
+import persistencia.RegistroInscripcion;
 
 import java.time.LocalDate;
 import java.util.ArrayList;

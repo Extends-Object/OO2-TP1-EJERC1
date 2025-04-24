@@ -1,7 +1,10 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
+import persistencia.InscripcionArchivo;
+import persistencia.InscripcionBaseDatos;
+import persistencia.RegistroInscripcion;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 
 public class Main {
@@ -57,6 +60,8 @@ public class Main {
         }
 
         //****************************** ENVIO DE EMAIL ************************************************************
+
+        //NO ESTOY HACIENDO CORRECTAMENTE EL DESACOPLAMIENTO ACA
 
         String emisor = "your.recipient@email.com";
         String destinatario = "john.doe@your.domain";
