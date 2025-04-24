@@ -1,5 +1,8 @@
 package persistencia;
 
+import modelo.Concurso;
+import modelo.Participante;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

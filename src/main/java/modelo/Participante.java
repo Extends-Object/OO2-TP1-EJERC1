@@ -1,3 +1,5 @@
+package modelo;
+
 public class Participante {
 
     //ATRIBUTO DE CLASE
@@ -27,7 +29,7 @@ public class Participante {
 
     @Override
     public String toString() {
-        return "[ID Participante: " + String.valueOf(id) + ", Puntos acumulados: " + this.puntosAcumulados + "], ";
+        return "[ID modelo.Participante: " + String.valueOf(id) + ", Puntos acumulados: " + this.puntosAcumulados + "], ";
     }
 
     public int getId() {        //COMO VERIFICO ESTA LOGICA

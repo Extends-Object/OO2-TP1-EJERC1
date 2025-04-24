@@ -1,3 +1,5 @@
+import modelo.Concurso;
+import modelo.Participante;
 import persistencia.RegistroInscripcion;
 
 import java.time.LocalDate;
@@ -11,7 +13,7 @@ public class RegistroInscripcionFake implements RegistroInscripcion {
 
     @Override
     public void registrarInscripcion(LocalDate fecha, Participante participante, Concurso concurso) {
-        registros.add("Fecha: " + fecha.toString() + ", ID Participante: " + participante.getId() + ", puntos acumulados: " + participante.getPuntosAcumulados() + ", ID Concurso: " + concurso.getId());
+        registros.add("Fecha: " + fecha.toString() + ", ID modelo.Participante: " + participante.getId() + ", puntos acumulados: " + participante.getPuntosAcumulados() + ", ID modelo.Concurso: " + concurso.getId());
     }
 
 

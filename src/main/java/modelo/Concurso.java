@@ -1,3 +1,5 @@
+package modelo;
+
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
 import persistencia.RegistroInscripcion;
@@ -75,7 +77,7 @@ public class Concurso {
 
     @Override
     public String toString() {
-        return "[ID Concurso: " + String.valueOf(id) + ", " + this.nombre + "]";
+        return "[ID modelo.Concurso: " + String.valueOf(id) + ", " + this.nombre + "]";
     }
 
     //******************************************************************************************************************
@@ -84,7 +86,7 @@ public class Concurso {
 
     //Sin polimorfismo
     /*
-    public void inscribirParticipante (Participante participante){
+    public void inscribirParticipante (modelo.Participante participante){
         LocalDate fechaActual = LocalDate.now();
 
         if(fechaActual.isBefore(fechaInicio) || fechaActual.isAfter(fechaFin)){

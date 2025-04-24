@@ -1,5 +1,9 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
+import modelo.Concurso;
+import modelo.Notificador;
+import modelo.NotificadorEmail;
+import modelo.Participante;
 import persistencia.InscripcionArchivo;
 import persistencia.InscripcionBaseDatos;
 import persistencia.RegistroInscripcion;
@@ -28,7 +32,7 @@ public class Main {
         RegistroInscripcion registroArchivo = new InscripcionArchivo(rutaArchivoInscriptos);
 
         //CREANDO EL CONCURSO
-        Concurso concurso1 = new Concurso("Concurso A", fechaInicio, fechaFin, registroArchivo);
+        Concurso concurso1 = new Concurso("modelo.Concurso A", fechaInicio, fechaFin, registroArchivo);
 
         try {
             concurso1.inscribirParticipante(participante1, fechaActual);
@@ -44,7 +48,7 @@ public class Main {
         //------------------------- Registrar inscripciones en BASE DE DATOS ---------------------------------------------
         RegistroInscripcion inscriptosBD = new InscripcionBaseDatos();
 
-        Concurso concurso2 = new Concurso("Concurso B", fechaInicio, fechaFin, inscriptosBD);
+        Concurso concurso2 = new Concurso("modelo.Concurso B", fechaInicio, fechaFin, inscriptosBD);
 
         Participante participante3 = new Participante("Pepe");
         Participante participante4 = new Participante("Pepa");
@@ -76,22 +80,22 @@ public class Main {
 
         //**************************** PRUEBAS QUE NO TIENEN NADA QUE VER CON LAS CONSIGNAS ****************************
 
-        //ManejoArchivos.crearArchivo("Archivos\\ArchivoPrueba.txt");
+        //persistencia.ManejoArchivos.crearArchivo("Archivos\\ArchivoPrueba.txt");
 
-        //ManejoArchivos.crearArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
+        //persistencia.ManejoArchivos.crearArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
 
-        //ManejoArchivos.escribirArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Hola :)");
+        //persistencia.ManejoArchivos.escribirArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Hola :)");
 
-        //ManejoArchivos.actualizarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Holaaa :)");
+        //persistencia.ManejoArchivos.actualizarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Holaaa :)");
 
-        //ManejoArchivos.actualizarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Chauuu :)");
+        //persistencia.ManejoArchivos.actualizarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt", "Chauuu :)");
 
-        //ManejoArchivos.leerArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
+        //persistencia.ManejoArchivos.leerArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
 
-        //ManejoArchivos.crearArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba3.txt");
+        //persistencia.ManejoArchivos.crearArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba3.txt");
 
-        //ManejoArchivos.borrarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
+        //persistencia.ManejoArchivos.borrarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba2.txt");
 
-        //ManejoArchivos.borrarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba3.txt");
+        //persistencia.ManejoArchivos.borrarArchivo("C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\ArchivoPrueba3.txt");
     }
 }

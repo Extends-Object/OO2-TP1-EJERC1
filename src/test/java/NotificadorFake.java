@@ -1,7 +1,9 @@
+import modelo.Notificador;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class NotificadorFake implements Notificador{
+public class NotificadorFake implements Notificador {
 
     private final List<String> mensajesEnviados = new ArrayList<>();
 

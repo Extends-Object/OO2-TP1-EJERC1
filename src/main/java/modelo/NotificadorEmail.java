@@ -1,10 +1,13 @@
+package modelo;
+
 import jakarta.mail.*;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
+
 import java.util.Properties;
 
 
-public class NotificadorEmail implements Notificador{
+public class NotificadorEmail implements Notificador {
 
     // provide account credentials                  //Credenciales que me da mailtrap
     final String username = "d84e36c103e3f5";

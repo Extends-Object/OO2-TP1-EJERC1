@@ -1,6 +1,8 @@
 package persistencia;
 
 import exceptions.DatabaseConnectionException;
+import modelo.Concurso;
+import modelo.Participante;
 
 import java.time.LocalDate;
 

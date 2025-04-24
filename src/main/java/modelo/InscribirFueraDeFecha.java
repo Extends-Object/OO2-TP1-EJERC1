@@ -1,6 +1,8 @@
+package modelo;
+
 import exceptions.LateRegistrationException;
 
-public class InscribirFueraDeFecha implements Inscripcion{
+public class InscribirFueraDeFecha implements Inscripcion {
 
     @Override
     public void inscribir(Participante participante, Concurso concurso) throws LateRegistrationException {

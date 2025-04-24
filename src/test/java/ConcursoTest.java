@@ -1,5 +1,8 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
+import modelo.Concurso;
+import modelo.Notificador;
+import modelo.Participante;
 import org.junit.jupiter.api.Test;
 import persistencia.RegistroInscripcion;
 
@@ -44,7 +47,7 @@ public class ConcursoTest {
     }
 
     //Hay un problema aca y es que no tengo control sobre la fecha actual, eso genera conflicto
-    //tengo que poder hacer inyeccion de fecha --> Refactorizando Concurso
+    //tengo que poder hacer inyeccion de fecha --> Refactorizando modelo.Concurso
     //Una forma --> que se reciba la fecha actual como parametro (¿?)
 
 

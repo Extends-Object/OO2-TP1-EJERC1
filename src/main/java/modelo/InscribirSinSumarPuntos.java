@@ -1,6 +1,6 @@
-import java.time.LocalDate;
+package modelo;
 
-public class InscribirSinSumarPuntos implements Inscripcion{
+public class InscribirSinSumarPuntos implements Inscripcion {
 
     @Override
     public void inscribir(Participante participante, Concurso concurso) {

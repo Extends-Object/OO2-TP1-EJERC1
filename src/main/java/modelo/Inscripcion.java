@@ -1,3 +1,5 @@
+package modelo;
+
 import exceptions.LateRegistrationException;
 
 public interface Inscripcion {
