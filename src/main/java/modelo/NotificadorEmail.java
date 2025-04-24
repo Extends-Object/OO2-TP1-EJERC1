@@ -19,7 +19,7 @@ public class NotificadorEmail implements Notificador {
 
 
     @Override
-    public void notificar(String emisor, String destinatario, String asunto, String cuerpo) {
+    public void notificar(Notificacion notificacion) {
 
 
         // configure SMTP details                               //Las propiedades no se tocan son asi por defecto
@@ -41,10 +41,10 @@ public class NotificadorEmail implements Notificador {
         try {
 
             Message message = new MimeMessage(session);                         //Contenedor del mail que tiene todas las cosas del mail
-            message.setFrom(new InternetAddress(emisor));                       //Crea un objeto dir de internet que recibe el mail
-            message.setRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));      //Es quien soy
-            message.setSubject(asunto);                                                             //Asunto
-            message.setText(cuerpo);                                                                //Cuerpo del mail
+            message.setFrom(new InternetAddress(notificacion.getEmisor()));                       //Crea un objeto dir de internet que recibe el mail
+            message.setRecipient(Message.RecipientType.TO, new InternetAddress(notificacion.getDestinatario()));      //Es quien soy
+            message.setSubject(notificacion.getAsunto());                                                             //Asunto
+            message.setText(notificacion.getCuerpo());                                                                //Cuerpo del mail
 
 
             Transport.send(message);                                    //Envia el mail

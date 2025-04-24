@@ -23,21 +23,23 @@ public class Concurso {
     private Inscripcion inscribir;
 
     private RegistroInscripcion registro;           //ARCHIVO o BD
+    private  Notificador notificador;
 
 
     //CONSTRUCTOR
-    public Concurso(String nombre, LocalDate fechaInicio, LocalDate fechaFin, RegistroInscripcion registro) {   //Se inyecto la dependencia
+    public Concurso(String nombre, LocalDate fechaInicio, LocalDate fechaFin, RegistroInscripcion registro, Notificador notificador) {   //Se inyecto la dependencia
         this.id = this.contador++;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.listaInscriptos = new ArrayList<>();
         this.registro = registro;
+        this.notificador = notificador;
     }
 
 
     //METODOS
-    public void inscribirParticipante (Participante participante, LocalDate fechaActual) throws LateRegistrationException, DatabaseConnectionException {
+    public void inscribirParticipante (Participante participante, LocalDate fechaActual, Notificacion notificacion) throws LateRegistrationException, DatabaseConnectionException {
 
 
         //PARA REGISTRAR EN MEMORIA (TP 1)------------------------------------------------------------------------------
@@ -56,6 +58,7 @@ public class Concurso {
         //PARA REGISTRAR EN ARCHIVOS O BD
         this.registro.registrarInscripcion(fechaActual, participante, this);    //ACA PARTICIPANTE YA TIENE LOS PUNTOS ASIGNADOS
         //ESTE REGISTRAR ES POLIMORFICO, REGISTRO PUEDE SER UN FAKE
+        this.notificador.notificar(notificacion);
 
 
     }

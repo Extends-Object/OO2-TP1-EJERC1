@@ -1,9 +1,6 @@
 import exceptions.DatabaseConnectionException;
 import exceptions.LateRegistrationException;
-import modelo.Concurso;
-import modelo.Notificador;
-import modelo.NotificadorEmail;
-import modelo.Participante;
+import modelo.*;
 import persistencia.InscripcionArchivo;
 import persistencia.InscripcionBaseDatos;
 import persistencia.RegistroInscripcion;
@@ -14,6 +11,19 @@ import java.time.LocalDate;
 public class Main {
     public static void main(String[] args) {
         // Creé una abstraccion mas para poder separar el registro en archivos del registro en BD
+
+        //****************************** ENVIO DE EMAIL ************************************************************
+
+        //NO ESTOY HACIENDO CORRECTAMENTE EL DESACOPLAMIENTO ACA
+
+        String emisor = "your.recipient@email.com";
+        String destinatario = "john.doe@your.domain";
+        String asunto = "Inscripción";
+        String cuerpo = "Usted se encuentra inscripto en el concurso.";
+
+        Notificador notificador = new NotificadorEmail();           //INSTANCIO EL NOTIFICADOR
+
+        Notificacion email = new Notificacion(emisor, destinatario, asunto, cuerpo);
 
 
         //************************************** Crear la informacion del concurso *************************************
@@ -31,12 +41,13 @@ public class Main {
         String rutaArchivoInscriptos = "C:\\Users\\retur\\OneDrive\\Escritorio\\UNRN\\TERCER AÑO\\PRIMER CUATRIMESTRE\\OBJETOS 2\\ArchivosJava\\Inscriptos.txt";
         RegistroInscripcion registroArchivo = new InscripcionArchivo(rutaArchivoInscriptos);
 
+
         //CREANDO EL CONCURSO
-        Concurso concurso1 = new Concurso("modelo.Concurso A", fechaInicio, fechaFin, registroArchivo);
+        Concurso concurso1 = new Concurso("modelo.Concurso A", fechaInicio, fechaFin, registroArchivo, notificador);
 
         try {
-            concurso1.inscribirParticipante(participante1, fechaActual);
-            concurso1.inscribirParticipante(participante2, fechaActual);
+            concurso1.inscribirParticipante(participante1, fechaActual, email);
+            concurso1.inscribirParticipante(participante2, fechaActual, email);
 
         } catch (LateRegistrationException e) {
             System.out.println(e.getMessage());
@@ -48,14 +59,14 @@ public class Main {
         //------------------------- Registrar inscripciones en BASE DE DATOS ---------------------------------------------
         RegistroInscripcion inscriptosBD = new InscripcionBaseDatos();
 
-        Concurso concurso2 = new Concurso("modelo.Concurso B", fechaInicio, fechaFin, inscriptosBD);
+        Concurso concurso2 = new Concurso("modelo.Concurso B", fechaInicio, fechaFin, inscriptosBD, notificador);
 
         Participante participante3 = new Participante("Pepe");
         Participante participante4 = new Participante("Pepa");
 
         try {
-            concurso2.inscribirParticipante(participante3, fechaActual);
-            concurso2.inscribirParticipante(participante4, fechaActual);
+            concurso2.inscribirParticipante(participante3, fechaActual, email);
+            concurso2.inscribirParticipante(participante4, fechaActual, email);
 
         } catch (LateRegistrationException e) {
             System.out.println(e.getMessage());
@@ -63,18 +74,6 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
-        //****************************** ENVIO DE EMAIL ************************************************************
-
-        //NO ESTOY HACIENDO CORRECTAMENTE EL DESACOPLAMIENTO ACA
-
-        String emisor = "your.recipient@email.com";
-        String destinatario = "john.doe@your.domain";
-        String asunto = "Inscripción";
-        String cuerpo = "Usted se encuentra inscripto en el concurso.";
-
-        Notificador notificador = new NotificadorEmail();           //INSTANCIO EL NOTIFICADOR
-
-        notificador.notificar(emisor, destinatario, asunto, cuerpo);
 
 
 
